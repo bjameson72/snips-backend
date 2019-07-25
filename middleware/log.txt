@@ -1,2 +1,3 @@
 Method POST was ran on /api/snippets at 1564078086323
 Method POST was ran on /api/snippets at 1564078087626
+Method GET was ran on / at 1564079118396
