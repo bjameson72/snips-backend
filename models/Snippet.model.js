@@ -1,8 +1,8 @@
 /* eslint-disable no-prototype-builtins */
-const fs = require('fs').promises;
-const path = require('path');
-const shortid = require('shortid');
-const { readJsonFromDb, writeJsonToDb } = require('../utils/db.utils');
+const fs = require("fs").promises;
+const path = require("path");
+const shortid = require("shortid");
+const { readJsonFromDb, writeJsonToDb } = require("../utils/db.utils");
 
 /**
  * a snippet object
@@ -24,11 +24,10 @@ const { readJsonFromDb, writeJsonToDb } = require('../utils/db.utils');
  */
 exports.insert = async ({ author, code, title, description, language }) => {
   try {
-    if (!author || !code || !title || !description || !language)
-      throw Error('Missing properties');
+    if (!author || !code || !title || !description || !language) throw Error("Missing properties");
 
     // read snippets.json
-    const snippets = await readJsonFromDb('snippets');
+    const snippets = await readJsonFromDb("snippets");
     // grab data from newSnippet (validate)
     // make newSnippet a proper object
     // generate default data (id, comments, favorites)
@@ -44,7 +43,7 @@ exports.insert = async ({ author, code, title, description, language }) => {
       favorites: 0,
     });
     // write back to the file
-    await writeJsonToDb('snippets', snippets);
+    await writeJsonToDb("snippets", snippets);
     return snippets[snippets.length - 1];
   } catch (err) {
     console.log(err);
@@ -62,17 +61,15 @@ exports.select = async (query = {}) => {
   try {
     // 1. read the file
     // 2. parse it
-    const snippets = await readJsonFromDb('snippets');
+    const snippets = await readJsonFromDb("snippets");
     // filter snippets with query
     // check if every query key
     // snippet[key] === query[key]
-    const filtered = snippets.filter(snippet =>
-      Object.keys(query).every(key => query[key] === snippet[key])
-    );
+    const filtered = snippets.filter(snippet => Object.keys(query).every(key => query[key] === snippet[key]));
     // 3. return the data
     return filtered;
   } catch (err) {
-    console.log('ERROR in Snippet model');
+    console.log("ERROR in Snippet model");
     throw err;
   }
 };
@@ -80,7 +77,7 @@ exports.select = async (query = {}) => {
 /* Update */
 exports.update = async (id, newData) => {
   // 1. read file
-  const snippets = await readJsonFromDb('snippets');
+  const snippets = await readJsonFromDb("snippets");
   // 2. find the snippet with id
   // 3. update the snippet with appropriate data (make sure to validate!)
   const updatedSnippets = snippets.map(snippet => {
@@ -95,16 +92,17 @@ exports.update = async (id, newData) => {
     return snippet;
   });
   // 4. write back to db
-  return writeJsonToDb('snippets', updatedSnippets);
+  return writeJsonToDb("snippets", updatedSnippets);
 };
 
 /* Delete */
 exports.delete = async id => {
   // Read in the db file
-  const snippets = await readJsonFromDb('snippets');
+  const snippets = await readJsonFromDb("snippets");
   // filter snippets for everything except snippet.id
   const filteredSnips = snippets.filter(snippet => snippet.id !== id);
   if (filteredSnips.length === snippets.length) return; // short circuit if id DNE
+  // TODO: maybe error here?
   // write the file
-  return writeJsonToDb('snippets', filteredSnips);
+  return writeJsonToDb("snippets", filteredSnips);
 };

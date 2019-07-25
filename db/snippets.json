@@ -68,5 +68,35 @@
     "language": "javascript",
     "comments": [],
     "favorites": 0
+  },
+  {
+    "id": "HNIDDkpLT",
+    "author": "Brock",
+    "code": "const myVar = 4",
+    "title": "const.js",
+    "description": "this is how you declare const variables in JS",
+    "language": "JavaScript",
+    "comments": [],
+    "favorites": 0
+  },
+  {
+    "id": "ZjPkXkw8J",
+    "author": "Brock",
+    "code": "const myVar = 4",
+    "title": "const.js",
+    "description": "this is how you declare const variables in JS",
+    "language": "JavaScript",
+    "comments": [],
+    "favorites": 0
+  },
+  {
+    "id": "oW5FF_Jwm",
+    "author": "Brock",
+    "code": "const myVar = 4",
+    "title": "const.js",
+    "description": "this is how you declare const variables in JS",
+    "language": "JavaScript",
+    "comments": [],
+    "favorites": 0
   }
 ]
