@@ -12,10 +12,12 @@ router.get("/api", (request, response) => {
   response.send("Welcome to the snips API ya savage");
 });
 
+console.log("In router");
+
 /* Snippets routes */
 router.post("/api/snippets", snippets.createSnippet);
 router.get("/api/snippets", snippets.getSnippet);
-router.get("/api/snippets/:id", (request, response) => {});
+router.get("/api/snippets/:id", snippets.getSnippetByID);
 router.patch("/api/snippets/:id", (request, response) => {});
 router.delete("/api/snippets/:id", (request, response) => {});
 
